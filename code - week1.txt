@@ -1,0 +1,15 @@
+import pandas as pd
+
+# reading file with pandas
+df = pd.read_csv("Desktop/companies.csv")
+df
+
+# filtering companies without a domain name
+df.dropna(subset=['domain'])
+
+# writing pandas output in parquet
+df.to_parquet('df.parquet.gzip' , compression ='gzip')
+pd.read_parquet('df.parquet.gzip')
+
+# writing pandas output in parquet
+df.to_json(orient='records' , compression="gzip")
